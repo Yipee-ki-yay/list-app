@@ -37,11 +37,11 @@ const List = ({match, history}) => {
   useEffect(() => {
     const list_storage = JSON.parse(localStorage.getItem('list'));
 
-    if ( list_storage.length && list.length === 0 ) {
+    if ( list_storage && list_storage.length && list.length === 0 ) {
       dispatch(setList(list_storage))
     }
     
-    if ( !list_storage.length && list.length === 0 ) {
+    if ( !list_storage && list.length === 0 ) {
       dispatch(setList(handleRandomValues()))
     }
   });
