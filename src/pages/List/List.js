@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 // -----Actions-----
 import { setList } from 'redux/actions/listActions';
@@ -47,12 +49,15 @@ const List = ({match, history}) => {
   return (
     <>
       <h3>
-        List {page}
+        Page {page}
       </h3>
-      <ListWrapper
-        page={page}
-        offset={offset}
-      />
+
+      <DndProvider backend={HTML5Backend}>
+        <ListWrapper
+          page={page}
+          offset={offset}
+        />
+      </DndProvider>
 
       <Box mt={4}>
         <Pagination 

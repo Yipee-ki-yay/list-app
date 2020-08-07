@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import browserHistory from './services/browserHistory.js';
 import { syncHistoryWithStore } from 'react-router-redux';
 import store from './redux/store';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import DefaultLayout from 'layouts/DefaultLayout';
 import List from 'pages/List/List';
@@ -15,6 +15,7 @@ function App() {
     <Provider store={store}>
       <Router history={history}>
         <Switch>
+          <Route path="/" exact component={() => <Redirect to="/1" />} />
           <Route path="/:page" exact component={(props) => (
             <DefaultLayout>
               <List {...props}/>
